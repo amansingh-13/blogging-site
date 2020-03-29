@@ -1,4 +1,4 @@
-## Blogger
+## Blogger!
 This is a basic blogging site created by me, purely using Django, as a project assigned by DevCom. Here is what you can do with it : <br/>
 
 - <b>Signup/Login</b> into your account
