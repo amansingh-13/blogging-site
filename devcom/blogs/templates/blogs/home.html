@@ -1,0 +1,9 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+<h1>Welcome to BLOGGER!</h1>
+<i>- made by Aman Singh as part of a project assigned by DevCom</i><br><br>
+{%if user.is_authenticated%}
+(You are currently logged in as {{request.user.first_name}} {{request.user.last_name}},
+<i>username</i>: {{request.user.username}})
+{%endif%}
+{% endblock %}

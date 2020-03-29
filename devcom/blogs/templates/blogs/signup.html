@@ -1,0 +1,10 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+<h1>Sign Up to BLOGGER!</h1>
+<form method="post">
+{%csrf_token%}
+{{form.as_p}}
+<input type="submit" value="Submit">
+    <i>(You will be taken to login page after successfully signing-up)</i>
+</form>
+{% endblock %}

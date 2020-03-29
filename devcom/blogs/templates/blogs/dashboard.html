@@ -1,0 +1,12 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+<h2>Welcome to your dashboard, {{user.first_name}}!</h2>
+Your published blogs:
+<ol reversed >
+{%for blogs in list %}
+	<li><a href="{%url 'blog' user.id blogs.id%}">{{blogs.blog_title}}</a>	({{blogs.datetime.date}})
+		(Votes:	{{blogs.votes}})
+	</li>
+{%endfor%}
+</ol>
+{% endblock %}

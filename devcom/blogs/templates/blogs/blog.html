@@ -1,0 +1,29 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+<h1 style="background-color:#ECECEC;">{{blog.blog_title}}</h1>
+<i>(Published on: {{blog.datetime}})</i><br><br>
+<b><a href="edit/">EDIT BLOG</a></b>    <i>or</i>    <b><a href="delete/">DELETE BLOG</a></b>
+<br/>
+<br/>
+<div style="background-color:#ECECEC;">
+{{blog.blog_text}}
+</div>
+<br>
+<br>
+<b>Votes: {{blog.votes}}</b><br><br>
+<a href="{%url 'comment' blog.user.id blog.id%}">Add Comment</a>
+<br>
+<br>
+<b>Comments:</b><br>
+
+{% for comments in blog.comment_set.all %}
+
+    <i>
+        ><a href="{%url 'dashboard_view' comments.commentor.id%}">
+            {{comments.commentor.first_name}}    {{comments.commentor.last_name}}</a>
+        :   {{comments.comment_text}}
+    </i>
+    <br>
+{% endfor %}
+
+{% endblock %}

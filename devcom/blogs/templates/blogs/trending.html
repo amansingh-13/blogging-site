@@ -1,0 +1,12 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+<h2> TOP POSTS of {{text}}</h2>
+{%for blogs in list%}
+    <ul>
+        <li><a href="{%url 'blog_view' blogs.user.id blogs.id%}">{{blogs.blog_title}}</a>
+            (Votes: {{blogs.votes}})
+
+        </li>
+    </ul>
+{%endfor%}
+{% endblock %}

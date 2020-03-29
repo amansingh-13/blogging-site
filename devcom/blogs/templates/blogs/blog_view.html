@@ -1,0 +1,36 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+<h1 style="background-color:#ECECEC;">{{blog.blog_title}}</h1>
+-<b>Written by {{blog.user.first_name}}  {{blog.user.last_name}}</b> (Published on: {{blog.datetime}})<br/>
+<br/>
+<a href="{%url 'dashboard_view' blog.user.id %}">View {{blog.user.first_name}}  {{blog.user.last_name}}'s other blogs</a>
+<br/>
+<br/>
+<div style="background-color:#ECECEC;">
+{{blog.blog_text}}
+</div>
+<br/>
+<br/>
+<b>Votes: {{blog.votes}}</b>
+<form method="post">
+{%csrf_token%}
+<input type="submit" style="padding: 6px 14px" name="upvote" value="Upvote" />
+{%csrf_token%}
+<input type="submit" style="padding: 6px 9px" name="downvote" value="Downvote" />
+</form>
+<br>
+<a href="{%url 'comment' blog.user.id blog.id%}">Add Comment</a>
+(Requires logging in)
+<br>
+<br>
+<b>Comments:</b><br>
+{% for comments in blog.comment_set.all %}
+    <i>
+        ><a href="{%url 'dashboard_view' comments.commentor.id%}">
+            {{comments.commentor.first_name}}    {{comments.commentor.last_name}}</a>
+        :   {{comments.comment_text}}
+    </i>
+    <br>
+{% endfor %}
+
+{% endblock %}
